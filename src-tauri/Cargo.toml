@@ -1,12 +1,12 @@
 [package]
-name = "tauri-app"
+name = "nexusx"
 version = "0.2.0"
 description = "Nexus X - System Optimizer"
 authors = ["pablo"]
 edition = "2021"
 
 [lib]
-name = "tauri_app_lib"
+name = "nexusx_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

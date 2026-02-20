@@ -1,0 +1,22 @@
+CONTRATO DE LICENÇA DE USUÁRIO FINAL (EULA) - NEXUS X
+
+Por favor, leia atentamente este contrato ("Contrato") antes de instalar ou usar o software Nexus X ("Software"). Ao instalar e usar o Software, você concorda com os termos deste Contrato.
+
+1. CONCESSÃO DE LICENÇA
+    Concedemos a você uma licença pessoal, revogável, não exclusiva e intransferível para usar o Software para fins de otimização do sistema em computadores pessoais de acordo com os termos deste Contrato.
+
+2. RESTRIÇÕES
+    O usuário concorda em não, e não permitirá que terceiros:
+    a) Licencie, venda, alugue ou faça uso comercial de código-fonte de terceiros utilizado no Software, exceto como expressamente previsto pela licença open-source (MIT).
+    b) Modifique, faça engenharia reversa do Software (a menos que tais restrições sejam proibidas por lei).
+
+3. PROPRIEDADE
+    O Software é fornecido "no estado em que se encontra" (As is). Todos os direitos, titularidade e interesses autorais relacionados ao Software continuam pertencendo a seu autor e criador (Pablo / Drown).
+
+4. ISENÇÃO DE GARANTIAS
+    A função de otimização interage com a memória (RAM) e arquivos do sistema operacional Windows (Cache). O Software foi projetado para ser seguro, entretanto, o autor não se responsabiliza por perdas de dados não salvos de terceiros que possam ocorrer durante operações de despejo de memória (EmptyWorkingSet). 
+
+5. MODIFICAÇÕES NO SOFTWARE E CONTRATO
+    O autor reserva-se o direito de modificar, suspender ou descontinuar o Suporte ou Operação do Software a qualquer momento.
+
+Ao clicar em "Aceito", você reconhece que leu e concorda com as condições deste EULA para utilizar o Nexus X.

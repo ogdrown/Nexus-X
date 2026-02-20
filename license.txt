@@ -1,0 +1,27 @@
+NEXUS X — END USER LICENSE AGREEMENT
+Version 0.2.0 | Author: Drown
+
+By installing or using Nexus X, you agree to the following terms:
+
+1. LICENSE
+   This software is provided for personal use only. You may not redistribute,
+   reverse engineer, or sell this application.
+
+2. NO WARRANTY
+   Nexus X is provided "AS IS" without any warranty of any kind. The author is
+   not responsible for any damages, data loss, or system instability resulting
+   from the use of this software.
+
+3. SYSTEM INTERACTION
+   This application interacts with Windows system memory management, registry,
+   network settings, and temporary files. Always save your work before running
+   optimization routines.
+
+4. ADMINISTRATOR RIGHTS
+   Some features require administrator privileges to function correctly, including
+   process priority configuration, power plan changes, and registry modifications.
+
+5. ACCEPTANCE
+   By clicking "I Agree" in the installer, you accept all terms in this agreement.
+
+Copyright (c) 2026 Drown. All rights reserved.

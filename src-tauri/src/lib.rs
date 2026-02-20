@@ -2,6 +2,9 @@ use std::fs;
 use std::path::PathBuf;
 use sysinfo::System;
 
+pub mod lol;
+pub mod network;
+
 #[tauri::command]
 fn get_system_memory() -> (u64, u64) {
     let mut sys = System::new_all();
@@ -43,7 +46,7 @@ fn calculate_dir_size(path: &PathBuf) -> u64 {
     size
 }
 
-fn clean_dir_recursive(path: &PathBuf) -> std::io::Result<()> {
+pub fn clean_dir_recursive(path: &PathBuf) -> std::io::Result<()> {
     if let Ok(entries) = fs::read_dir(path) {
         for entry in entries.flatten() {
             let path = entry.path();
@@ -125,7 +128,10 @@ pub fn run() {
             get_system_memory,
             get_cache_size,
             clean_cache,
-            clean_ram
+            clean_ram,
+            lol::optimize_league_of_legends,
+            lol::restore_league_of_legends,
+            network::optimize_network
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

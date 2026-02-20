@@ -1,82 +1,108 @@
 <div align="center">
   <img src="public/logosf.png" alt="Nexus X Logo" width="200"/>
   <h1>Nexus X</h1>
-  <p><strong>A Premium System Windows Optimizer built with Tauri & React</strong></p>
+  <p><strong>Premium Windows System Optimizer — Tauri + React</strong></p>
+  <p>
+    <img alt="Version" src="https://img.shields.io/badge/version-0.2.0-8b5cf6?style=flat-square"/>
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows-blue?style=flat-square"/>
+    <img alt="Built with Tauri" src="https://img.shields.io/badge/built_with-Tauri_v2-24C8D8?style=flat-square"/>
+  </p>
 </div>
 
 ---
 
-## 🚀 Sobre o Projeto
+## Sobre o Projeto
 
-**Nexus X** é uma aplicação de desktop moderna projetada exclusivamente para sistemas corporativos e pessoais Windows com o objetivo de realizar otimizações de Memória RAM e limpeza de Disco profundo com segurança e eficiência máxima. Aproveitando a força da linguagem Rust no backend através do framework [Tauri](https://tauri.app/), e uma interface de usuário super rápida utilizando **React, TypeScript e Vite**, ele entrega resultados reais na palma da sua mão.
+**Nexus X** é um aplicativo de desktop moderno exclusivo para Windows que automatiza otimizações de desempenho do sistema com um único clique. Com backend em Rust via [Tauri v2](https://tauri.app/), a aplicação se comunica diretamente com a API nativa do Windows para resultados reais — sem scripts PowerShell nem gambiarras.
 
-Em vez de métodos convencionais, o Nexus X se comunica diretamente com a API Nativa do Windows (`windows-rs`) via chamadas diretas como `EmptyWorkingSet`, removendo com força bruta os processos dormentes ou vazamentos (leaks) retidos na Memória RAM Física por programas em segundo plano.
+Na versão **0.2.0**, o app ganhou otimizador dedicado para jogos (League of Legends), otimizador de rede/ping, redesign completo da interface e muito mais.
 
-## ✨ Funcionalidades Principais
+---
 
-* ⚡ **Limpeza Profunda de RAM:** Liberação da memória nativa invocando despejos do *Working Set* em todos os processos ativos, resultando na devolução real de Gigabytes livres ao sistema.
-* 🗑️ **Limpa Cache Avançado:** Remoção inteligente de arquivos temporários, despejos de sistema e lixeiras para liberação de Disco.
-* 🎨 **UI Premium Moderna:** Uma interface *Dark Mode* desenvolvida em Vanilla CSS com temática Glassmorphism roxo e efeitos interativos de destaque.
-* 🪶 **Alta Performance e Leveza:** Graças ao compilador em Rust (Tauri), o instalador empacotado consome muito menos memória e CPU em inatividade se comparado a aplicações convencionais feitas puramente em Node ou Electron.
-* 📱 **Layout Totalmente Responsivo:** Redimensionamento inteligente do *Dashboard* e da Barra de Navegação para telas pequenas / modo compacto.
+## Funcionalidades — v0.2.0
 
-## 🛠️ Tecnologias Utilizadas
+### Otimizar RAM
+- Liberacao profunda de memoria via `EmptyWorkingSet` (Win32 API) em todos os processos ativos
+- Exibe percentual e uso atual em tempo real (atualiza a cada 3s)
+- Retorna quantos MB/GB foram efetivamente liberados
 
-**Frontend:**
-- [React 18](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [Lucide Icons](https://lucide.dev/)
-- Vanilla CSS 
+### Limpar Cache
+- Remove arquivos temporarios de `%TEMP%`, `Windows\Temp` e Prefetch
+- Calcula o tamanho do lixo antes e depois da limpeza
+- Exibe espaco liberado em disco
 
-**Backend:**
-- [Rust](https://www.rust-lang.org/)
-- [Tauri v2](https://v2.tauri.app/)
-- [sysinfo](https://github.com/GuillaumeGomez/sysinfo) para métricas de performance do hardware. 
-- [windows-rs crate](https://github.com/microsoft/windows-rs) (Win32 API) para comunicação privilegiada entre kernel/processos no módulo de limpeza.
+### Otimizar Jogos (League of Legends)
+- Selecao de jogo com icone dedicado
+- 3 modos de desempenho: **Maximo FPS (720p)**, **Balanceado (900p)**, **Competitivo (1024x768)**
+- Modificacao automatica do `game.cfg` com backup antes de qualquer alteracao
+- Configuracoes aplicadas: resolucao, sombras, efeitos, VSync, antialiasing, iluminacao por pixel e mais
+- Ativacao do plano de energia Alto Desempenho
+- Desativacao do Xbox Game Bar e Game DVR
+- Prioridade de CPU definida como Alta via registro IFEO
+- Botao de restauracao que reverte tudo para o estado original
 
-## ⚙️ Compilando e Rodando Localmente
+### Otimizar Rede
+- Flush do cache DNS (`ipconfig /flushdns`)
+- Ativacao do Direct Cache Access (DCA) via `netsh`
+- Desativacao do throttling de rede (`NetworkThrottlingIndex = 0xFFFFFFFF`)
+- Reducao do `SystemResponsiveness` para priorizar jogos
+- Desativacao do algoritmo de Nagle (TCPNoDelay) para menor latencia TCP
 
-Para rodar este projeto na sua máquina e modificar o código fonte:
+### Interface
+- Design inspirado no ExitLag — minimalista, dark mode profundo
+- Tipografia Inter com hierarquia limpa
+- Icones Lucide (sem emojis)
+- Sidebar com secoes separadas e pills de navegacao
+- Barra de progresso animada em tempo real via eventos Tauri
+- Toast de status no canto inferior direito
 
-### Pré-requisitos
-Certifique-se de ter os componentes de build instalados no seu Windows:
-- [Node.js](https://nodejs.org/en)
-- [Rust & Cargo](https://rustup.rs/) (Siga o guia incluindo C++ Build Tools do Visual Studio)
-- [Tauri CLI requirements](https://tauri.app/v1/guides/getting-started/prerequisites)
+---
 
-### Instalação
+## Tecnologias
 
-1. Clone o repositório:
+| Camada | Tecnologia |
+|--------|-----------|
+| UI | React 19 + TypeScript + Vite |
+| Estilos | Vanilla CSS (design system proprio) |
+| Icones | Lucide React |
+| Backend | Rust + Tauri v2 |
+| Sistema | windows-rs (Win32 API), winreg, sysinfo |
+
+---
+
+## Rodando Localmente
+
+### Pre-requisitos
+- [Node.js](https://nodejs.org/)
+- [Rust & Cargo](https://rustup.rs/) + C++ Build Tools do Visual Studio
+- [Tauri CLI prerequisites](https://tauri.app/guides/prerequisites)
+
+### Comandos
+
 ```bash
-git clone https://github.com/drown/nexus-x.git
-cd nexus-x
-```
-
-2. Instale as dependências do Frontend (Javascript/React):
-```bash
+# Instalar dependencias
 npm install
-```
 
-3. Inicie o Servidor de Desenvolvimento Local:
-```bash
+# Iniciar em modo dev
 npm run tauri dev
-```
 
-4. *(Opcional)* Empacote a build final para distribuição `.exe` de Produção:
-```bash
+# Gerar instalador .exe (NSIS)
 npm run tauri build
 ```
-*(As builds compiladas serão geradas na pasta interna de empacotamento (`src-tauri/target/release` ou compilador manual em `installer`)).*
 
+> O instalador gerado estara em `src-tauri/target/release/bundle/nsis/`.
 
-## ⚠️ Aviso Legal e Isenção de Responsabilidade
+---
 
-Este aplicativo interage diretamente com o gerenciamento de memória do sistema operacional Windows para otimizar a RAM e manipula arquivos em pastas assinaladas como temporárias. O seu uso é fornecido **"como está"** (As is). O autor não se responsabiliza pela estabilidade do sistema host ou potencial encerramento forçado de programas mal-comportados durante o uso do Otimizador. Sempre salve seus arquivos em andamento antes de ejetar o "Working Set".
+## Aviso Legal
 
-## 📝 Licença
-Distribuído nos termos definidos pelo EULA interno (*End User License Agreement*) com bases na licença MIT Open Source em camadas compatíveis.
+Este aplicativo interage diretamente com o gerenciamento de memoria, registro e arquivos de sistema do Windows. O uso e fornecido **"como esta"**. Sempre crie backups dos seus dados importantes. O autor nao se responsabiliza por instabilidades causadas pelo uso do software.
+
+---
+
+## Licenca
+Distribuido sob EULA interno com bases compativeis com MIT.
 
 <div align="center">
-  <sub>Criado com ❤️ por Drown.</sub>
+  <sub>Criado por Drown &middot; v0.2.0</sub>
 </div>
